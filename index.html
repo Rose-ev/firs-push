@@ -5,8 +5,120 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="gradingsystem.css">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </head>
-<body>
-    <h1>Hello World</h1>
+<body  id="wahala">
+    <div>
+    <header id="grading"><h1 class="text-sm-center text-md-center py-3" id="gsystem"  >GRADING SYSTEM</h1></header>
+    <div id="bg2">
+      <div id="subject">
+        <h4 class="subj1">SUBJECTS</h4>
+        <ul class="list1">
+          <li>Mathematics</li>
+          <li>English Lang.</li>
+          <li>Chemistry</li>
+          <li>Physics</li>
+          <li style="white-space:nowrap ;" >Computer Science</li> 
+        </ul>
+      </div>
+      <div><h4 class="subj1">TEST SCORE</h4>
+        <ul>
+          <li><input type="number" name="" id="input1" class="bg-danger border border-warning w-sm-50 inputs"></li>
+          <li><input type="number" name="" id="input6" class="bg-danger border border-warning  inputs"></li>
+          <li><input type="number" name="" id="input3" class="bg-danger border border-warning inputs"></li>
+          <li><input type="number" name="" id="input4" class="bg-danger border border-warning  inputs"></li>
+          <li><input type="number" name="" id="input5" class="bg-danger border border-warning  inputs"></li>
+        </ul>
+        <button class="bg-danger w-25 border border-warning p-2" id="test" onclick="average()">Test Score</button>
+        <div id="disp"></div>
+      </div>
+      <div>
+        <div class="score">
+      <h4 class="subj1">EXAM SCORE</h4>
+      <ul>
+          <li><input type="number" name="" id="input7" class="bg-danger border border-warning inputs"></li>
+          <li><input type="number" name="" id="input8" class="bg-danger border border-warning inputs"></li>
+          <li><input type="number" name="" id="input9" class="bg-danger border border-warning inputs"></li>
+          <li><input type="number" name="" id="input10" class="bg-danger border border-warning inputs"></li>
+          <li><input type="number" name="" id="input11" class="bg-danger border border-warning inputs"></li>
+      </ul>
+    </div>
+      <button class="bg-danger w-25 border border-warning p-2 " id="exam" onclick="etotal()" > Exam Score</button>
+      <div id="dispexam"></div> <br>
+      <button class="bg-danger w-25 border border-warning p-2 " id="total" onclick="Total()" >TOTAL</button>
+      <div id="show"></div>
+      <div id="grade"></div>
+    </div>
+  </div>
+             
+     <script>
+      var myAudio = new Audio("")
+        function average() {
+        var inp1 = Number(input1.value) 
+        var inp6 = Number(input6.value) 
+        var inp3=  Number(input3.value) 
+        var inp4 = Number(input4.value) 
+        var inp5=  Number(input5.value)
+          disp.innerText =  Number(inp1+inp6+inp3+inp4+inp5)/5
+          input1.value = ""
+          input6.value = ""
+          input3.value = ""
+          input4.value = ""
+          input5.value = ""
+        }
+        function etotal() {
+        var inp7 = Number(input7.value) 
+        var inp8 = Number(input8.value) 
+        var inp9=  Number(input9.value) 
+        var inp10= Number(input10.value) 
+        var inp11= Number(input11.value)
+          dispexam.innerText =  Number(inp7+inp8+inp9+inp10+inp11)/5
+          input7.value  = ""
+          input8.value = ""
+          input9.value = ""
+          input10.value = ""
+          input11.value = ''
+        }
+        function Total() {
+           var showAns = Number(dispexam.innerText) 
+           var showAver = Number(disp.innerText)
+           show.innerHTML = Number(showAns + showAver).toFixed(2)
+           if (show.innerHTML >= 70) {
+              grade.innerHTML=`<h3 class="text-warning P-5">"A"EXCELLENT!</h3>`
+              myAudio.play()
+           }
+           else if (show.innerHTML >=60 && show.innerHTML <70) {
+            grade.innerHTML=`<h3 class="text-warning P-5">"B"VERY GOOD</h3>`
+              myAudio.play()
+           }
+           else if (show.innerHTML >=50 && show.innerHTML <60) {
+            grade.innerHTML=`<h3 class="text-warning P-5">"C"GOOD</h3>`
+              myAudio.play()
+           }
+           else if (show.innerHTML >=40 && show.innerHTML <50) {
+            grade.innerHTML=`<h3 class="text- P-5">"D"FAIR</h3>`
+              myAudio.play()
+           }
+           else if (show.innerHTML >=30 && show.innerHTML <40) {
+            grade.innerHTML=`<h3 class="text-danger P-5">"E"POOR</h3>`
+              myAudio.play()
+           }
+           else if (show.innerHTML >=20 && show.innerHTML <30) {
+            grade.innerHTML=`<h3 class="text-warning P-5">"F"ON PROBATION</h3>`
+              myAudio.play()
+           }
+           else if (show.innerHTML >=10 && show.innerHTML <20) {
+            grade.innerHTML=`<h3 class="text-warning P-5">ADVICE TO WITHDRAW</h3>`
+              myAudio.play()
+           }
+           
+        }
+       
+    </script>
+     
 </body>
 </html>
